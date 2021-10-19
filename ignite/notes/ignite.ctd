@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cherrytree>
+  <bookmarks list=""/>
+  <node name="ignite" unique_id="1" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="1" foreground="" ts_creation="1634228307" ts_lastsave="1634228324">
+    <node name="nmap" unique_id="2" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="1" foreground="" ts_creation="1634228316" ts_lastsave="1634228337">
+      <rich_text># Nmap 7.92 scan initiated Thu Oct 14 12:00:24 2021 as: nmap -T4 -n -A -p 80 -oN nmap.txt 10.10.154.67
+Nmap scan report for 10.10.154.67
+Host is up (0.16s latency).
+
+PORT   STATE SERVICE VERSION
+80/tcp open  http    Apache httpd 2.4.18 ((Ubuntu))
+| http-robots.txt: 1 disallowed entry 
+|_/fuel/
+|_http-title: Welcome to FUEL CMS
+|_http-server-header: Apache/2.4.18 (Ubuntu)
+Warning: OSScan results may be unreliable because we could not find at least 1 open and 1 closed port
+Aggressive OS guesses: Linux 3.10 - 3.13 (95%), ASUS RT-N56U WAP (Linux 3.4) (95%), Linux 3.16 (95%), Linux 3.1 (93%), Linux 3.2 (93%), Linux 5.4 (93%), AXIS 210A or 211 Network Camera (Linux 2.6.17) (92%), Linux 3.10 (92%), Linux 3.12 (92%), Linux 3.2 - 4.9 (92%)
+No exact OS matches for host (test conditions non-ideal).
+Network Distance: 2 hops
+
+TRACEROUTE (using port 80/tcp)
+HOP RTT       ADDRESS
+1   158.89 ms 10.8.0.1
+2   157.84 ms 10.10.154.67
+
+OS and Service detection performed. Please report any incorrect results at </rich_text>
+      <rich_text link="webs https://nmap.org/submit/">https://nmap.org/submit/</rich_text>
+      <rich_text> .
+# Nmap done at Thu Oct 14 12:00:45 2021 -- 1 IP address (1 host up) scanned in 22.21 seconds</rich_text>
+    </node>
+    <node name="gobuster" unique_id="3" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="1" foreground="" ts_creation="1634228324" ts_lastsave="1634319040">
+      <rich_text>gobuster dir -u </rich_text>
+      <rich_text link="webs http://10.10.154.67">http://10.10.154.67</rich_text>
+      <rich_text> -w /usr/share/dirbuster/wordlists/directory-list-2.3-small.txt -t 100 -q
+/0                    (Status: 200) [Size: 16595]
+/assets               (Status: 301) [Size: 313] [--&gt; </rich_text>
+      <rich_text link="webs http://10.10.154.67/assets/]">http://10.10.154.67/assets/]</rich_text>
+      <rich_text>
+/fuel
+/login</rich_text>
+    </node>
+  </node>
+</cherrytree>

@@ -1,0 +1,10 @@
+# Nmap 7.92 scan initiated Fri Sep 24 03:11:25 2021 as: nmap -T4 -n -oN nmap1.txt 10.10.117.184
+Nmap scan report for 10.10.117.184
+Host is up (0.18s latency).
+Not shown: 979 filtered tcp ports (no-response), 18 filtered tcp ports (admin-prohibited)
+PORT   STATE SERVICE
+21/tcp open  ftp
+22/tcp open  ssh
+80/tcp open  http
+
+# Nmap done at Fri Sep 24 03:11:40 2021 -- 1 IP address (1 host up) scanned in 14.47 seconds

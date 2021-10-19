@@ -1,0 +1,16 @@
+<?xml version="1.0>
+<DirBusterResults>
+<Result type="File" path="/index.html" responseCode="200" />
+<Result type="Dir" path="/" responseCode="200" />
+<Result type="Dir" path="/icons/" responseCode="403" />
+<Result type="Dir" path="/admin/" responseCode="200" />
+<Result type="File" path="/admin/index.html" responseCode="200" />
+<Result type="File" path="/admin/admin.html" responseCode="200" />
+<Result type="Dir" path="/icons/small/" responseCode="403" />
+<Result type="File" path="/admin/archive.tar" responseCode="200" />
+<Result type="File" path="/icons/README.html" responseCode="200" />
+<Result type="Dir" path="/etc/" responseCode="200" />
+<Result type="Dir" path="/etc/squid/" responseCode="200" />
+<Result type="File" path="/etc/squid/passwd" responseCode="200" />
+<Result type="File" path="/etc/squid/squid.conf" responseCode="200" />
+</DirBusterResults>

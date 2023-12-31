@@ -118,21 +118,21 @@ Service detection performed. Please report any incorrect results at https://nmap
 
 Port 8000 is open. The home page has a username and password in the web page posts. I searched for web technology and found the web application built on Bolt CMS.
 
-![Password](https://github.com/het-desai/tryhackme/blob/main/bolt/photos/password.png)
+![Password](https://github.com/het-desai/tryhackme/blob/main/bolt/Screenshots/password.png)
 
-![Username and Website CMS Copyright tag](https://github.com/het-desai/tryhackme/blob/main/bolt/photos/usernameAndCMSName.png)
+![Username and Website CMS Copyright tag](https://github.com/het-desai/tryhackme/blob/main/bolt/Screenshots/usernameAndCMSName.png)
 
 ## Search technology information over Internet
 
 Search for details about CMS. I found that Bolt CMS's has default login pages.
 
-![Bolt web page research](https://github.com/het-desai/tryhackme/blob/main/bolt/photos/webpageResearch.png)
+![Bolt web page research](https://github.com/het-desai/tryhackme/blob/main/bolt/Screenshots/webpageResearch.png)
 
 ## Get initial access
 
 Test user credentials at the login page, and credentials successfully worked. The version of Bolt CMS, which is mentioned at the bottom of the dashboard.
 
-![CMS version](https://github.com/het-desai/tryhackme/blob/main/bolt/photos/cmsVersion.png)
+![CMS version](https://github.com/het-desai/tryhackme/blob/main/bolt/Screenshots/cmsVersion.png)
 
 ## Search exploit for Bolt CMS
 
@@ -140,19 +140,19 @@ Search Bolt CMS exploits in the Google Hacking Database using the terminal tool.
 
 `searchsploit bolt`
 
-![Google hacking database exploit ID](https://github.com/het-desai/tryhackme/blob/main/bolt/photos/cmsVulnerabilityGhdb.png)
+![Google hacking database exploit ID](https://github.com/het-desai/tryhackme/blob/main/bolt/Screenshots/cmsVulnerabilityGhdb.png)
 
 Detailed explanation about the exploit mentioned [here](https://github.com/het-desai/tryhackme/blob/main/bolt/Bolt.md#Exploit%20explaination). Search the exploit on Metasploit as well.
 
 `search bolt`
 
-![Metasploit exploit module name for Bolt CMS](https://github.com/het-desai/tryhackme/blob/main/bolt/photos/cmsVulnerabilityMetasploit.png)
+![Metasploit exploit module name for Bolt CMS](https://github.com/het-desai/tryhackme/blob/main/bolt/Screenshots/cmsVulnerabilityMetasploit.png)
 
 ## Exploit the target
 
 Use the `exploit/unix/webapp/bolt_authenticated_rce` exploit and configure LHOST, LPORT, RHOST, RPORT, Username, Password and the run the exploit. Successful exploit gives a webshell into our terminal.
 
-![Metasploit exploit execution](https://github.com/het-desai/tryhackme/blob/main/bolt/photos/cmsExploitExecution.png)
+![Metasploit exploit execution](https://github.com/het-desai/tryhackme/blob/main/bolt/Screenshots/cmsExploitExecution.png)
 
 ## Exploit explaination
 
@@ -162,24 +162,24 @@ Here, I only use snapshots of the code to explain the vulnerability. The complet
 
 After the dashboard access, anyone can execute a remote command. The profile page has Display name component, which is our web shell upload point. In the below code, you can see that the display name has a PHP web shell code in the POST request data.
 
-![Exploit Part 1](https://github.com/het-desai/tryhackme/blob/main/bolt/photos/exploitP1.png)
+![Exploit Part 1](https://github.com/het-desai/tryhackme/blob/main/bolt/Screenshots/exploitP1.png)
 
 All this session information is stored in a random name file, which you can visit by following this path.
 
 `http://targeted.website/async/browser/cache/.session`
 
-![Exploit Part 2](https://github.com/het-desai/tryhackme/blob/main/bolt/photos/exploitP2.png)
+![Exploit Part 2](https://github.com/het-desai/tryhackme/blob/main/bolt/Screenshots/exploitP2.png)
 
 The below screenshot shows that in the system, the display name is stored.
 
-![Exploit Part 3](https://github.com/het-desai/tryhackme/blob/main/bolt/photos/exploitP3.png)
+![Exploit Part 3](https://github.com/het-desai/tryhackme/blob/main/bolt/Screenshots/exploitP3.png)
 
 The Dashboard > File Management page has rename functionality, where you get an idea of how this CMS uses the rename functionality. Same way in the below script use and rename the session file. Not only rename the file, but also change the location of the file using path traverse.
 
-![Exploit Part 4](https://github.com/het-desai/tryhackme/blob/main/bolt/photos/exploitP4.png)
+![Exploit Part 4](https://github.com/het-desai/tryhackme/blob/main/bolt/Screenshots/exploitP4.png)
 
 After that, rename the file and change the file location on the File Management page. Now its time to execute the command below screenshot.
 
-![Exploit Part 5](https://github.com/het-desai/tryhackme/blob/main/bolt/photos/exploitP5.png)
+![Exploit Part 5](https://github.com/het-desai/tryhackme/blob/main/bolt/Screenshots/exploitP5.png)
 
 **Disclamer: Above screenshot there are multiple machine IPs because I started machine twice to take screenshots.**

@@ -142,7 +142,7 @@ Search Bolt CMS exploits in the Google Hacking Database using the terminal tool.
 
 ![Google hacking database exploit ID](https://github.com/het-desai/tryhackme/blob/main/bolt/Screenshots/cmsVulnerabilityGhdb.png)
 
-Detailed explanation about the exploit mentioned [here](https://github.com/het-desai/tryhackme/blob/main/bolt/Bolt.md#Exploit%20explaination). Search the exploit on Metasploit as well.
+Detailed explanation about the exploit mentioned [here](https://github.com/het-desai/tryhackme/blob/main/bolt/bolt.md#exploit-explaination). Search the exploit on Metasploit as well.
 
 `search bolt`
 
@@ -157,8 +157,6 @@ Use the `exploit/unix/webapp/bolt_authenticated_rce` exploit and configure LHOST
 ## Exploit explaination
 
 Here, I only use snapshots of the code to explain the vulnerability. The complete code is [here](https://www.exploit-db.com/exploits/48296).
-
-### Part 1
 
 After the dashboard access, anyone can execute a remote command. The profile page has Display name component, which is our web shell upload point. In the below code, you can see that the display name has a PHP web shell code in the POST request data.
 
